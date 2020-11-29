@@ -2,7 +2,7 @@ const express = require('express')
 const { isAdmin, isAuth, requireSignin } = require('../controllers/auth')
 const router = express.Router()
 
-const { create, categoryId, read, list, update, remove } = require('../controllers/category')
+const { create, categoryById, read, list, update, remove } = require('../controllers/category')
 const { userById } = require('../controllers/user')
 
 
@@ -13,6 +13,6 @@ router.put('/update/:categoryId/:userId', requireSignin, isAuth, isAdmin, update
 router.delete('/create/:categoryId/:userId', requireSignin, isAuth, isAdmin, remove)
 
 router.param('userId', userById)
-router.param('categoryId', categoryId)
+router.param('categoryId', categoryById)
 
 module.exports = router
