@@ -3,6 +3,8 @@ const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
+
 require('dotenv').config()
 require('./config/database')
 
@@ -14,6 +16,7 @@ const productRoutes = require('./routes/product')
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cookieParser())
+app.use(cors())
 
 app.use('/api', authRoutes)
 app.use('/api/users/', userRoutes)
